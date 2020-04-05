@@ -19,86 +19,90 @@ import { ErrorService } from './ErrorService';
 @Injectable()
 export class VYTestService {
 
-  docdet :DocumentDetail[];
+  docdet: DocumentDetail[];
+  getValidatedDocumentDetails: Observable<DocumentDetail[]> =
+    new Observable((subscriber) => {
+      if (this.docdet.length == 0) {
+        alert(1);
+       // throwError("Not proper document");
+     //   subscriber.next(throwError("Not proper document") );
+        throw new Error("Not Error");
+      }
+      subscriber.next(this.docdet);
+    }).pipe(catchError((error) => {
+
+      this.errService.setError(error);
+      alert("erorCatch");
+
+      return this.errService.ErrorHandle
+      // return throwError(error); 
+    }));;
+
   // getValidatedDocumentDetails : Observable <DocumentDetail[]>=
-  // new Observable ((subscriber)=>{
-  //   if (this.docdet.length==0) { alert ("err" ) ;throwError("Not proper document"); this.errService.setError("err");}
-  //     subscriber.next(this.docdet) ;
-  //     }).pipe(catchError((error)=>{
-  //     this.errService.setError(error);
-  //     alert ("1");
-  //      return this.errService.ErrorHandle
-  //     // return throwError(error); 
-  //     }));;
-
-      getValidatedDocumentDetails : Observable <DocumentDetail[]>=
-      new Observable ((subscriber)=>
-      {
-        if (this.docdet.length==0)
-         { 
-          throwError("Not proper document"); //does not work here
-          this.errService.setError("err");}
-          subscriber.next(this.docdet);
-          });;
-  
+  // new Observable ((subscriber)=>
+  // {
+  //   if (this.docdet.length==0)
+  //    { 
+  //     //throwError("Not proper document"); //does not work here
+  //     this.errService.setError("err");}
+  //     subscriber.next(this.docdet);
+  //     });;
 
 
-  constructor(private http: HttpClient, private errService :ErrorService) {
+
+  constructor(private http: HttpClient, private errService: ErrorService) {
 
     // DI httpClient is injected 
   }
 
 
   public getHttpUsers(): Observable<any> {
-  let url = "https://jsonplaceholder.typicode777.com/users/";
+    let url = "https://jsonplaceholder.typicode777.com/users/";
 
- 
-    let UserRequest = this.http.get(url).pipe(catchError((error) =>
-     { 
-       
-       this.errService.setError(error);
-       return this.errService.ErrorHandle
+
+    let UserRequest = this.http.get(url).pipe(catchError((error) => {
+
+      this.errService.setError(error);
+      return this.errService.ErrorHandle
       // return throwError(error); 
-        }));
-
-   
-  return UserRequest;
- }
+    }));
 
 
-
-
-//
-public getValues(): Observable<any> 
-{
-
-
-  let url = "http://localhost/WEBAPI/api/Values";
-  url = "https://localhost:44356/weatherforecast";
-
-    let UserRequest = this.http.get(url).pipe(catchError((error) =>
-     { 
-       return throwError("WEB Api is not working on local machine");
-        }));
-   
-  return UserRequest;
-
-
-}
- // this for field : observable 
- // we created observable manualy
-   
-        //https://medium.com/fuzzycloud/angular-and-observable-4bf890b2a282
-//Observable Function 
+    return UserRequest;
+  }
 
 
 
- 
-    
 
+  //
+  public getValues(): Observable<any> {
+
+
+    let url = "http://localhost/WEBAPI/api/Values";
+    url = "https://localhost:44356/weatherforecast";
+
+    let UserRequest = this.http.get(url).pipe(catchError((error) => {
+      return throwError("WEB Api is not working on local machine");
+    }));
+
+    return UserRequest;
 
 
   }
+  // this for field : observable 
+  // we created observable manualy
+
+  //https://medium.com/fuzzycloud/angular-and-observable-4bf890b2a282
+  //Observable Function 
+
+
+
+
+
+
+
+
+}
 
 
 

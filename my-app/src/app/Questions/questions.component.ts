@@ -87,9 +87,10 @@ onOptionSelected(node:number , optionSelected :number )
             documentDate: '09/09/2019',
             documentDetails: this.documentDetails
         }
-        this.documentDetails=[];
+       this.documentDetails=[];
+       console.log(this.document);
        
-        vyService.docdet= this.documentDetails;
+  vyService.docdet= this.documentDetails;
 // subscription;
 // idea   observable poluhayutsq  1 time this public normal method
 // subject works as a static, gathering all errors;
