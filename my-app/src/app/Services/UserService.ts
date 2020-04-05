@@ -15,7 +15,6 @@ export class UserService
  constructor (fakeService : FakeService)
  {
      this.user= this.fakeService.getUser().subscribe(dataUser =>{
-            console.log(dataUser);
      }) 
  }
 

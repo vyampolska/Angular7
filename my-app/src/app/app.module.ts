@@ -12,6 +12,7 @@ import {RouterModule, Routes } from '@angular/router';
 import {QuestionsComponent}  from './Questions/questions.component';
 import { ErrorService } from './Services/ErrorService';
 import { VYTestService } from './Services/VYTestService';
+import { DisplayErrorComponent } from './display-error/display-error.component';
 
 
 
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     QuestionsComponent,
     RadioButtonListQuestionComponent,
     TextQuestionComponent,
-    UsersForTestingComponent
+    UsersForTestingComponent,
+    DisplayErrorComponent
    
   ],
   

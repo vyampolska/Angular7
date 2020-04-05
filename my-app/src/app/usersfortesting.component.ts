@@ -17,7 +17,7 @@ export class UsersForTestingComponent implements OnInit {
   constructor(private vyService: VYTestService ,private errService :ErrorService )
    {
      
-    errService.subscribeEroors().subscribe((errors :[])=>{alert(errors);} )
+  //  errService.subscribeEroors().subscribe((errors :[])=>{alert(errors);} )
     vyService.getHttpUsers().subscribe
       (
        

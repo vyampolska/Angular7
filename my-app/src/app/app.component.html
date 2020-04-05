@@ -2,11 +2,17 @@
 <base href="/">
 
 <nav>
-        <a routerLink="/GeogeUsers" routerLinkActive="active">Users</a> iuiuiuiuiuiui
-
+  <div>
+        <a routerLink="/GeogeUsers" routerLinkActive="active">Users</a> 
+  </div>     
+  <div>
         <a routerLink="/Q" routerLinkActive="active">Questios</a>
+  </div>
       </nav>
+
+
       <router-outlet></router-outlet>
+      <app-display-error></app-display-error>  
 <!-- 
 <div *ngFor= "let documentDetail of document.documentDetails; let i=index;" >
 <app-text-question [question]= "documentDetail.question" *ngIf="documentDetail.question.type==questionType.text"></app-text-question>    

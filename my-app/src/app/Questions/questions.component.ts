@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import{Document,DocumentDetail,Question,Option,User ,
-    QuestionType,QuestionRadiolist,
-    QuestionText} from '../Structure/Structure';
+import {Document,DocumentDetail,Question,Option,User ,
+        QuestionType,QuestionRadiolist,
+        QuestionText} from '../Structure/Structure';
 import {VYTestService} from '../Services/VYTestService';
 
 
@@ -38,16 +38,10 @@ documentDetails :DocumentDetail[];
 onOptionSelected(node:number , optionSelected :number )
 {
    
-    console.log(this.documentDetails[node].nodeID);
 
 }
- //constructor(private vyService: VYTestService){
-    constructor(){
-      //mantra2  new observable ? Subscription connection
-      //
-     // let u1= vyService.getUsers().subscribe(user0=>{console.log(user0) ;});
-
-       
+ constructor(private vyService: VYTestService){
+    
         this.documentDetails =[
             {
                 documentID:1,
@@ -93,6 +87,14 @@ onOptionSelected(node:number , optionSelected :number )
             documentDate: '09/09/2019',
             documentDetails: this.documentDetails
         }
-     }
+        this.documentDetails=[];
+       
+        vyService.docdet= this.documentDetails;
+// subscription;
+// idea   observable poluhayutsq  1 time this public normal method
+// subject works as a static, gathering all errors;
+vyService.getValidatedDocumentDetails.subscribe((data)=>{this.documentDetails=data;} )    
+    }
 
+     
 }
