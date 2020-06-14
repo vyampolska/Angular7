@@ -2,3 +2,5 @@
 .idea/
 
 nodeJsExample/node_modules
+
+node_modules
