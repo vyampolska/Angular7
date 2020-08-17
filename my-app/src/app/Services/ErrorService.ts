@@ -28,6 +28,7 @@ export class ErrorService
   setError (error)
   {
     this.errors.push(error);
+    alert(error);
     //vy
     this.ErrorHandle.next(this.errors);
     //  var yy = new (this.Err2);

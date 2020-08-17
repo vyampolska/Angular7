@@ -9,11 +9,10 @@
        
     
     <mat-radio-group aria-label="Select an option" [(ngModel)]="question.optionSelected" > 
-            <mat-radio-button *ngFor="let option of  question.options; let j=index;" [value]="option.id"
-                
-                [checked]="option.id===question.optionSelected"
-            >{{option.answer}}  </mat-radio-button>
-           
+            <mat-radio-button *ngFor="let option of  question.options; let j=index;" [value]="option.id"               
+                [checked]="option.id===question.optionSelected"              
+            >{{option.answer}}
+           </mat-radio-button>           
         </mat-radio-group>
 
     

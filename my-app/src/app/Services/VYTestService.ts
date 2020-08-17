@@ -20,34 +20,21 @@ import { ErrorService } from './ErrorService';
 export class VYTestService {
 
   docdet: DocumentDetail[];
-  getValidatedDocumentDetails: Observable<DocumentDetail[]> =
-    new Observable((subscriber) => {
-      if (this.docdet.length == 0) {
-        alert(1);
-       // throwError("Not proper document");
-     //   subscriber.next(throwError("Not proper document") );
-        throw new Error("Not Error");
-      }
-      subscriber.next(this.docdet);
-    }).pipe(catchError((error) => {
+  
+  public getValidatedDocumentDetails(): Observable<any> {
+    //let url = "https://jsonplaceholder.typicode.com/users/";
+    let url = "http://localhost/WEBAPIADONET/api/Document"
+
+    let UserRequest = this.http.get(url).pipe(catchError((error) => {
 
       this.errService.setError(error);
-      alert("erorCatch");
-
       return this.errService.ErrorHandle
       // return throwError(error); 
-    }));;
+    }));
 
-  // getValidatedDocumentDetails : Observable <DocumentDetail[]>=
-  // new Observable ((subscriber)=>
-  // {
-  //   if (this.docdet.length==0)
-  //    { 
-  //     //throwError("Not proper document"); //does not work here
-  //     this.errService.setError("err");}
-  //     subscriber.next(this.docdet);
-  //     });;
-
+console.log(UserRequest);
+    return UserRequest;
+  }
 
 
   constructor(private http: HttpClient, private errService: ErrorService) {
@@ -57,7 +44,7 @@ export class VYTestService {
 
 
   public getHttpUsers(): Observable<any> {
-    let url = "https://jsonplaceholder.typicode777.com/users/";
+    let url = "https://jsonplaceholder.typicode.com/users/";
 
 
     let UserRequest = this.http.get(url).pipe(catchError((error) => {

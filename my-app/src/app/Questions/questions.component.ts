@@ -1,101 +1,67 @@
-import {Component} from '@angular/core';
-import {Document,DocumentDetail,Question,Option,User ,
-        QuestionType,QuestionRadiolist,
-        QuestionText} from '../Structure/Structure';
-import {VYTestService} from '../Services/VYTestService';
+import { Component } from '@angular/core';
+import {
+  Document, DocumentDetail, Question, Option, User,
+  QuestionType, QuestionRadiolist,
+  QuestionText
+} from '../Structure/Structure';
+import { VYTestService } from '../Services/VYTestService';
 
+import { ErrorService } from '../Services/ErrorService';
 
-   
 
 
 
 @Component({
-    selector: 'quest',
-    templateUrl: './questions.component.html',
-    styleUrls: [],
-    providers: [VYTestService]
+  selector: 'quest',
+  templateUrl: './questions.component.html',
+  styleUrls: [],
+  providers: [VYTestService]
 })
 
 
 export class QuestionsComponent {
-// Fields
-  
-    ngOnInit(){
+  // Fields
 
-        
-       
-            }
+  ngOnInit() {
 
 
 
-questionType =QuestionType;    
-user: User;
-document: Document;
-options: Array<Option>;
-documentDetails :DocumentDetail[];
+  }
 
 
-onOptionSelected(node:number , optionSelected :number )
-{
-   
 
-}
- constructor(private vyService: VYTestService){
+  questionType = QuestionType;
+  //user: User;
+  document: any;
+  options: Array<Option>[];
+  documentDetails: Array<DocumentDetail>[];
+
+  docData = new Array<Object>();
+  idDocument: number;
+  onOptionSelected(node: number, optionSelected: number) {
+
+
+  }
+
+
+  constructor(private vyService: VYTestService) {
+  this.getDocument();
     
-        this.documentDetails =[
-            {
-                documentID:1,
-                nodeID:1,
-                seq :1,
-                idTree :1,
-                //question:this.rquestion
-               question: { 
-                    id:1,
-                    description:'Gender?',
-                    type: QuestionType.radiolist,
-                    optionSelected:1,
-                    options: [
-                        {
-                            id:1,
-                            answer:'n/a'
-                            
-                        },
-                        {
-                            id:2,
-                            answer:'Yes'
-                            
-                        },
-                        {
-                            id:3,
-                            answer:'No'
-                            
-                        }
-                         
-                    ]
-                }
-                
-               
+  }
 
+  getDocument(  )
+  {
 
-                
-            }
-        ];
-        this.document={
-            idDocument:1,
-            user:this.user,
-            coment:'first',
-            documentDate: '09/09/2019',
-            documentDetails: this.documentDetails
+    this.vyService.getValidatedDocumentDetails().subscribe
+      (
+        (data: any) => {
+          this.document = (data.doc) as Document;
+          this.documentDetails = this.document.documentDetails;
+          this.idDocument = this.document.idDocument;
+          console.log(this.document.idDocument);
+          console.log(this.idDocument);
+          console.log(this.documentDetails);
         }
-       this.documentDetails=[];
-       console.log(this.document);
-       
-  vyService.docdet= this.documentDetails;
-// subscription;
-// idea   observable poluhayutsq  1 time this public normal method
-// subject works as a static, gathering all errors;
-vyService.getValidatedDocumentDetails.subscribe((data)=>{this.documentDetails=data;} )    
-    }
-
-     
+      )
+  }
 }

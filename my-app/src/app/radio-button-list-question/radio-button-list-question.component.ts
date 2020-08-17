@@ -6,7 +6,8 @@ import { QuestionRadiolist } from '../Structure/Structure';
   templateUrl: './radio-button-list-question.component.html',
   styleUrls: ['./radio-button-list-question.component.css']
 })
-export class RadioButtonListQuestionComponent implements OnInit {
+export class RadioButtonListQuestionComponent implements OnInit
+ {
 @Input() question:QuestionRadiolist;
   constructor() { }
 

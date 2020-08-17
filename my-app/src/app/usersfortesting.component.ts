@@ -28,15 +28,7 @@ export class UsersForTestingComponent implements OnInit {
         }
       )
   }
-        // vyService.getValues().subscribe
-        // (
-        //   (data: object[]) => {
-  
-        //      alert(data);
-  
-  
-  
-        //     })
+      
   
      
 
