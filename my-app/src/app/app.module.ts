@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {MatRadioModule} from '@angular/material'; // added
+import {MatCardModule} from '@angular/material'; // added
 import {AppComponent} from './app.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     BrowserModule,
     NoopAnimationsModule,
     MatRadioModule, //added
+    MatCardModule, // added
     FormsModule,
     HttpClientModule
   ],

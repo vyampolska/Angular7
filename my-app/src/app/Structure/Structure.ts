@@ -46,6 +46,7 @@ export interface QuestionText extends  Question
 }
 
 export interface DocumentDetail {
+   // DocumentDetailID : number;
     documentID: number;
     nodeID: number;
     question:   Question | QuestionRadiolist | QuestionText; 

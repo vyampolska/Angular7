@@ -1,10 +1,13 @@
+
 <h1>Question application</h1>
 
 <div>Document ID :{{idDocument}}</div>
  <div *ngFor= "let documentDetail of documentDetails; let i=index;" >
+     
 <!-- <app-text-question [question]= "documentDetail.question" *ngIf="documentDetail.question.type==questionType.text"></app-text-question>     -->
- <app-radio-button-list-question [question]= "documentDetail.question"  *ngIf="documentDetail.question.type==questionType.radiolist">
+ <!-- <app-radio-button-list-question [detail]= "documentDetail"  [question]= "documentDetail.question" (onQuestionSelectedOptionChanged)="onQuestionSelectedOptionChanged($event)"  *ngIf="documentDetail.question.type=='RadioButtonList'"> -->
+<!-- </app-radio-button-list-question> -->
+<app-radio-button-list-question [detail]= "documentDetail" [question]= "documentDetail.question" (onQuestionSelectedOptionChanged)="onQuestionSelectedOptionChanged($event)"  *ngIf="documentDetail.question.type==questionType.radiolist"> 
 </app-radio-button-list-question>
- 
 
 </div> 

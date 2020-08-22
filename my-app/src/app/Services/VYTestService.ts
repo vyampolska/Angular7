@@ -21,20 +21,44 @@ export class VYTestService {
 
   docdet: DocumentDetail[];
   
-  public getValidatedDocumentDetails(): Observable<any> {
-    //let url = "https://jsonplaceholder.typicode.com/users/";
-    let url = "http://localhost/WEBAPIADONET/api/Document"
+//   public getValidatedDocumentDetails(): Observable<any> {
+//     //let url = "https://jsonplaceholder.typicode.com/users/";
+//     let url = "http://localhost/WEBAPIADONET/api/Document"
 
-    let UserRequest = this.http.get(url).pipe(catchError((error) => {
+//     let UserRequest = this.http.get(url).pipe(catchError((error) => {
 
-      this.errService.setError(error);
-      return this.errService.ErrorHandle
-      // return throwError(error); 
-    }));
+//       this.errService.setError(error);
+      
+//       return this.errService.ErrorHandle;
 
-console.log(UserRequest);
-    return UserRequest;
-  }
+//       // return throwError(error); 
+//     }));
+
+// console.log(UserRequest);
+
+//     return UserRequest;
+
+
+
+
+
+    
+//   }
+
+
+// public getValidatedDocumentDetails(): Observable<any> {
+//       let url = "https://jsonplaceholder.typicode.com/users/";
+//       //let url = "http://localhost/WEBAPIADONET/api/Document"
+  
+//       let UserRequest = this.http.get(url).pipe(catchError((error) => {
+//        this.errService.setError(error);        
+//         return this.errService.ErrorHandle;          
+//       }));
+  
+//   console.log(UserRequest);
+//         return UserRequest;
+      
+//     }
 
 
   constructor(private http: HttpClient, private errService: ErrorService) {
@@ -43,6 +67,21 @@ console.log(UserRequest);
   }
 
 
+  public getValidatedDocumentDetails(): Observable<any> {
+    let url = "http://localhost/WEBAPIADONET/api/Document";
+
+
+    let UserRequest = this.http.get(url).pipe(catchError((error) => {
+
+      this.errService.setError(error);
+      return this.errService.ErrorHandle
+      // return throwError(error); 
+    }));
+
+    //alert(UserRequest);
+    console.log((UserRequest))
+    return UserRequest;
+  }
   public getHttpUsers(): Observable<any> {
     let url = "https://jsonplaceholder.typicode.com/users/";
 

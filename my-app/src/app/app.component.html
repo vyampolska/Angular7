@@ -1,7 +1,9 @@
 
 <base href="/">
-<div class="container-fluid">
+
+ 
 <nav>
+ 
   <div>
         <a routerLink="/GeogeUsers" routerLinkActive="active">Users</a> 
   </div>     
@@ -12,13 +14,8 @@
 
 
       <router-outlet></router-outlet>
-</div >
+
+
+
       <app-display-error></app-display-error>  
-<!-- 
-<div *ngFor= "let documentDetail of document.documentDetails; let i=index;" >
-<app-text-question [question]= "documentDetail.question" *ngIf="documentDetail.question.type==questionType.text"></app-text-question>    
-<app-radio-button-list-question [question]= "documentDetail.question"  *ngIf="documentDetail.question.type==questionType.radiolist">
 
-</app-radio-button-list-question>
-
-</div> -->
